@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: demo-replicaset
+  labels:
+    app: demo-replicaset
+    environment: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: replicaset-demo
+      environment: production
+  template:
+    metadata:
+      labels:
+        app: replicaset-demo
+        environment: production
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

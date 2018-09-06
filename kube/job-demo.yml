@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: demo-job
+spec:
+  backoffLimit: 3
+  activeDeadlineSeconds: 30
+  template:
+    spec:
+      containers:
+      - name: what-we-love
+        image: alpine:latest
+        command:
+        - "echo"
+        - "we love kube <3"
+      restartPolicy: Never

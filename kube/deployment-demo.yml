@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deployment
+  labels:
+    app: demo-deployment
+    environment: production
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo-deployment
+      environment: production
+  template:
+    metadata:
+      labels:
+        app: demo-deployment
+        environment: production
+    spec:
+      containers:
+      - name: web
+        image: akalipetis/headers
+        ports:
+        - containerPort: 8000
+          name: web
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-deployment-svc
+spec:
+  type: NodePort
+  selector:
+    app: demo-deployment
+    environment: production
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: web
