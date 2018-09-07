@@ -1,0 +1,44 @@
+version: "3.5"
+
+services:
+  web:
+    build: docker-training-samples-micro-django
+    depends_on:
+      - db
+      - greeting
+      - content
+    ports:
+      - ${PORT:-8000}:8000
+    environment:
+      SECRET_KEY: ${SECRET_KEY:-something-super-secret}
+      DATABASE_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@${POSTGRES_HOST:-db}/${POSTGRES_DB:-postgres}
+      GREETING_APP_URL: ${GREETING_APP_URL:-http://greeting:4567/}
+      GREETING_APP_USER: ${GREETING_APP_USER:-paris}
+      GREETING_APP_PASSWORD: ${GREETING_APP_PASSWORD:-kasidiaris}
+      CONTENT_APP_URL: ${CONTENT_APP_URL:-http://content:5000/}
+      CONTENT_APP_USER: ${CONTENT_APP_USER:-paris}
+      CONTENT_APP_PASSWORD: ${CONTENT_APP_PASSWORD:-kasidiaris}
+  
+  db:
+    image: postgres:10.5
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  
+  greeting:
+    build: docker-training-samples-micro-sinatra
+    environment:
+      AUTH_USER: ${GREETING_APP_USER:-paris}
+      AUTH_PASSWORD: ${GREETING_APP_PASSWORD:-kasidiaris}
+
+  content:
+    build: docker-training-samples-micro-flask
+    environment:
+      AUTH_USER: ${CONTENT_APP_USER:-antonis}
+      AUTH_PASSWORD: ${CONTENT_APP_PASSWORD:-kalipetis}
+
+volumes:
+  db_data:
