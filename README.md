@@ -3,11 +3,11 @@
 This is a set of example microservices written in Django, Flask and Sinatra intended to be used as part of 2hog's Docker trainings.
 
 ## Spec
-The [front-facing Django service](./docker-training-samples-micro-django) provides a sign in mechanism along with a single endpoint (`GET /`), which:
+The [front-facing Django service](https://github.com/2hog/docker-training-samples-micro-django) provides a sign in mechanism along with a single endpoint (`GET /`), which:
 
 1. Requires session authentication
-2. Requests a greeting via a `POST` request to the [**greeting** service](./docker-training-samples-micro-sinatra)
-3. Passes the provided greeting via a `GET` URL parameter to the [**content** service](./docker-training-samples-micro-flask)
+2. Requests a greeting via a `POST` request to the [**greeting** service](https://github.com/2hog/docker-training-samples-micro-sinatra)
+3. Passes the provided greeting via a `GET` URL parameter to the [**content** service](https://github.com/2hog/docker-training-samples-micro-flask)
 4. Returns the received HTML fragment as part of a complete HTML document to the user
 
 ## Deployment
