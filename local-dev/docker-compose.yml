@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+  web:
+    build: ./
+    command: flask run --host=0.0.0.0 --port=5000
+    environment:
+      - FLASK_APP=hello.py
+      - REDIS_URL=redis://redis/0
+      - FLASK_DEBUG=1
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - ${PORT:-5000}:5000
+  
+  redis:
+    image: redis:4-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
