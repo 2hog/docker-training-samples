@@ -27,7 +27,7 @@ docker stack deploy -c docker-compose.yml docker-training-samples
 ### Kubernetes
 
 ```sh
-kubectl apply -f docker-training-sample-micro-sinatra/kube -f docker-training-sample-micro-flask/kube -f docker-training-sample-micro-django/kube
+kubectl apply -f docker-training-samples-micro-sinatra/kube -f docker-training-samples-micro-flask/kube -f docker-training-samples-micro-django/kube
 ```
 
 ## License
