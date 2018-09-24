@@ -1,0 +1,9 @@
+[submodule "docker-training-samples-micro-flask"]
+	path = docker-training-samples-micro-flask
+	url = https://github.com/2hog/docker-training-samples-micro-flask
+[submodule "docker-training-samples-micro-django"]
+	path = docker-training-samples-micro-django
+	url = https://github.com/2hog/docker-training-samples-micro-django
+[submodule "docker-training-samples-micro-sinatra"]
+	path = docker-training-samples-micro-sinatra
+	url = https://github.com/2hog/docker-training-samples-micro-sinatra
