@@ -7,3 +7,6 @@
 [submodule "docker-training-samples-micro-sinatra"]
 	path = sinatra
 	url = https://github.com/2hog/docker-training-samples-micro-sinatra
+[submodule "php"]
+	path = php
+	url = https://github.com/2hog/docker-training-samples-micro-php
